@@ -10,12 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  dio: ^3.0.10
-  enum_to_string: ^1.0.14
-  flutter_hooks: ^0.15.0
-  hooks_riverpod: ^0.12.4
-  html_character_entities: ^0.1.2+4
-  meta: ^1.2.4
+  dio: ^4.0.6
+  enum_to_string: ^2.0.1
+  equatable: ^2.0.3
+  flutter_hooks: ^0.18.3
+  hooks_riverpod: ^1.0.3
+  html_character_entities: ^1.0.0+1
+  meta: ^1.7.0
 
   cupertino_icons: ^1.0.2
 
