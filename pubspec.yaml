@@ -1,25 +1,28 @@
-name: iruka_quiz
+name: flutter_riverpod_quiz
 description: A new Flutter project.
 
 publish_to: "none"
 
+version: 1.0.0+1
+
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
-  golden_toolkit: ^0.13.0
+  dio: ^3.0.10
+  enum_to_string: ^1.0.14
+  equatable: ^1.2.6
+  flutter_hooks: ^0.15.0
+  hooks_riverpod: ^0.12.4
+  html_character_entities: ^0.1.2+4
+  meta: ^1.2.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^1.0.0
-
 flutter:
   uses-material-design: true
-  assets:
-    - assets/fonts/
