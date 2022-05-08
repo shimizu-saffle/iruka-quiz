@@ -304,12 +304,6 @@ class QuizQuestions extends StatelessWidget {
 }
 
 class AnswerCard extends StatelessWidget {
-  final String answer;
-  final bool isSelected;
-  final bool isCorrect;
-  final bool isDisplayingAnswer;
-  final VoidCallback onTap;
-
   const AnswerCard({
     Key? key,
     required this.answer,
@@ -318,6 +312,12 @@ class AnswerCard extends StatelessWidget {
     required this.isDisplayingAnswer,
     required this.onTap,
   }) : super(key: key);
+
+  final String answer;
+  final bool isSelected;
+  final bool isCorrect;
+  final bool isDisplayingAnswer;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
