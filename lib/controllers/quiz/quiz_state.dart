@@ -1,24 +1,23 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../models/question_model.dart';
 
 enum QuizStatus { initial, correct, incorrect, complete }
 
+@immutable
 class QuizState extends Equatable {
-  final String selectedAnswer;
-  final List<Question> correct;
-  final List<Question> incorrect;
-  final QuizStatus status;
-
-  bool get answered =>
-      status == QuizStatus.incorrect || status == QuizStatus.correct;
-
   const QuizState({
     required this.selectedAnswer,
     required this.correct,
     required this.incorrect,
     required this.status,
   });
+
+  final String selectedAnswer;
+  final List<Question> correct;
+  final List<Question> incorrect;
+  final QuizStatus status;
 
   factory QuizState.initial() {
     return const QuizState(
@@ -28,6 +27,9 @@ class QuizState extends Equatable {
       status: QuizStatus.initial,
     );
   }
+
+  bool get answered =>
+      status == QuizStatus.incorrect || status == QuizStatus.correct;
 
   @override
   List<Object> get props => [

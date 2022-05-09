@@ -16,13 +16,13 @@ class QuizController extends StateNotifier<QuizState> {
     if (currentQuestion.correctAnswer == answer) {
       state = state.copyWith(
         selectedAnswer: answer,
-        correct: state.correct..add(currentQuestion),
+        correct: [...state.correct, currentQuestion],
         status: QuizStatus.correct,
       );
     } else {
       state = state.copyWith(
         selectedAnswer: answer,
-        incorrect: state.incorrect..add(currentQuestion),
+        incorrect: [...state.incorrect, currentQuestion],
         status: QuizStatus.incorrect,
       );
     }
