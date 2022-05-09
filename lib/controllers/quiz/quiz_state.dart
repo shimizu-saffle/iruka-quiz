@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../models/question.dart';
+import '../../models/question/question.dart';
 
 enum QuizStatus { initial, correct, incorrect, complete }
 

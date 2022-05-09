@@ -9,7 +9,7 @@ import '../controllers/quiz/quiz_controller.dart';
 import '../controllers/quiz/quiz_state.dart';
 import '../enums/difficulty.dart';
 import '../models/failure_model.dart';
-import '../models/question.dart';
+import '../models/question/question.dart';
 import '../repositories/quiz/quiz_repository.dart';
 
 final quizQuestionsProvider = FutureProvider.autoDispose<List<Question>>(

@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../enums/difficulty.dart';
 import '../../models/failure_model.dart';
-import '../../models/question.dart';
+import '../../models/question/question.dart';
 import 'base_quiz_repository.dart';
 
 final dioProvider = Provider<Dio>((ref) => Dio());
