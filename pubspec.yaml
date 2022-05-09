@@ -7,9 +7,7 @@ environment:
   sdk: ">=2.16.2 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
+  cupertino_icons: ^1.0.2
   dio: ^4.0.6
   enum_to_string: ^2.0.1
   equatable: ^2.0.3
@@ -17,14 +15,15 @@ dependencies:
   hooks_riverpod: ^1.0.3
   html_character_entities: ^1.0.0+1
   meta: ^1.7.0
-
-  cupertino_icons: ^1.0.2
+  freezed_annotation: ^2.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^1.0.0
+  build_runner: ^2.1.10
+  json_serializable: ^6.2.0
+  freezed: ^2.0.3
 
 flutter:
   uses-material-design: true
