@@ -5,11 +5,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:html_character_entities/html_character_entities.dart';
 
-import '../controllers/quiz/quiz_controller.dart';
-import '../controllers/quiz/quiz_state.dart';
 import '../enums/difficulty.dart';
 import '../models/failure/failure.dart';
 import '../models/question/question.dart';
+import '../providers/quiz/quiz_controller.dart';
+import '../providers/quiz/quiz_state.dart';
 import '../repositories/quiz/quiz_repository.dart';
 
 final quizQuestionsProvider = FutureProvider.autoDispose<List<Question>>(
