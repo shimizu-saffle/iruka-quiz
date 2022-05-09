@@ -1,9 +1,11 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../models/question_model.dart';
 
 enum QuizStatus { initial, correct, incorrect, complete }
 
+@immutable
 class QuizState extends Equatable {
   const QuizState({
     required this.selectedAnswer,
