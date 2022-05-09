@@ -9,10 +9,10 @@ import '../controllers/quiz/quiz_controller.dart';
 import '../controllers/quiz/quiz_state.dart';
 import '../enums/difficulty.dart';
 import '../models/failure_model.dart';
-import '../models/question_model.dart';
+import '../models/question.dart';
 import '../repositories/quiz/quiz_repository.dart';
 
-final quizQuestionsProvider = FutureProvider.autoDispose<List<OldQuestion>>(
+final quizQuestionsProvider = FutureProvider.autoDispose<List<Question>>(
   (ref) => ref.watch(quizRepositoryProvider).getQuestions(
         numQuestions: 5,
         categoryId: Random().nextInt(24) + 9,
@@ -80,7 +80,7 @@ class QuizPage extends HookConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     PageController pageController,
-    List<OldQuestion> questions,
+    List<Question> questions,
   ) {
     if (questions.isEmpty) {
       return QuizError(
@@ -191,7 +191,7 @@ class QuizResults extends StatelessWidget {
   }) : super(key: key);
 
   final QuizState state;
-  final List<OldQuestion> questions;
+  final List<Question> questions;
   final WidgetRef widgetRef;
 
   @override
@@ -242,7 +242,7 @@ class QuizQuestions extends StatelessWidget {
 
   final PageController pageController;
   final QuizState state;
-  final List<OldQuestion> questions;
+  final List<Question> questions;
   final WidgetRef widgetRef;
 
   @override

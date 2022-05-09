@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../models/question_model.dart';
+import '../../models/question.dart';
 
 enum QuizStatus { initial, correct, incorrect, complete }
 
@@ -15,8 +15,8 @@ class QuizState extends Equatable {
   });
 
   final String selectedAnswer;
-  final List<OldQuestion> correct;
-  final List<OldQuestion> incorrect;
+  final List<Question> correct;
+  final List<Question> incorrect;
   final QuizStatus status;
 
   factory QuizState.initial() {
@@ -41,8 +41,8 @@ class QuizState extends Equatable {
 
   QuizState copyWith({
     String? selectedAnswer,
-    List<OldQuestion>? correct,
-    List<OldQuestion>? incorrect,
+    List<Question>? correct,
+    List<Question>? incorrect,
     QuizStatus? status,
   }) {
     return QuizState(

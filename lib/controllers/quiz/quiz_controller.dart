@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:iruka_quiz/controllers/quiz/quiz_state.dart';
 
-import '../../models/question_model.dart';
+import '../../models/question.dart';
 
 final quizControllerProvider =
     StateNotifierProvider.autoDispose<QuizController, QuizState>(
@@ -11,7 +11,7 @@ final quizControllerProvider =
 class QuizController extends StateNotifier<QuizState> {
   QuizController() : super(QuizState.initial());
 
-  void submitAnswer(OldQuestion currentQuestion, String answer) {
+  void submitAnswer(Question currentQuestion, String answer) {
     if (state.answered) return;
     if (currentQuestion.correctAnswer == answer) {
       state = state.copyWith(
@@ -28,7 +28,7 @@ class QuizController extends StateNotifier<QuizState> {
     }
   }
 
-  void nextQuestion(List<OldQuestion> questions, int currentIndex) {
+  void nextQuestion(List<Question> questions, int currentIndex) {
     state = state.copyWith(
       selectedAnswer: '',
       status: currentIndex + 1 < questions.length

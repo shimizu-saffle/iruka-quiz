@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../enums/difficulty.dart';
 import '../../models/failure_model.dart';
-import '../../models/question_model.dart';
+import '../../models/question.dart';
 import 'base_quiz_repository.dart';
 
 final dioProvider = Provider<Dio>((ref) => Dio());
@@ -20,7 +20,7 @@ class QuizRepository extends BaseQuizRepository {
   QuizRepository(this._read);
 
   @override
-  Future<List<OldQuestion>> getQuestions({
+  Future<List<Question>> getQuestions({
     required int numQuestions,
     required int categoryId,
     required Difficulty difficulty,
@@ -47,7 +47,7 @@ class QuizRepository extends BaseQuizRepository {
         final data = Map<String, dynamic>.from(response.data);
         final results = List<Map<String, dynamic>>.from(data['results'] ?? []);
         if (results.isNotEmpty) {
-          return results.map((e) => OldQuestion.fromMap(e)).toList();
+          return results.map((e) => Question.fromJson(e)).toList();
         }
       }
       return [];
