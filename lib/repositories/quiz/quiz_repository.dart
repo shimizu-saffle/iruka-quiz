@@ -5,7 +5,7 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../enums/difficulty.dart';
-import '../../models/failure_model.dart';
+import '../../models/failure/failure.dart';
 import '../../models/question/question.dart';
 import 'base_quiz_repository.dart';
 
@@ -52,11 +52,11 @@ class QuizRepository extends BaseQuizRepository {
       }
       return [];
     } on DioError catch (err) {
-      throw OldFailure(
+      throw Failure(
         message: err.response?.statusMessage ?? 'Something went wrong!',
       );
     } on SocketException {
-      throw const OldFailure(message: 'Please check your connection.');
+      throw Failure(message: 'Please check your connection.');
     }
   }
 }

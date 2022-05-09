@@ -8,7 +8,7 @@ import 'package:html_character_entities/html_character_entities.dart';
 import '../controllers/quiz/quiz_controller.dart';
 import '../controllers/quiz/quiz_state.dart';
 import '../enums/difficulty.dart';
-import '../models/failure_model.dart';
+import '../models/failure/failure.dart';
 import '../models/question/question.dart';
 import '../repositories/quiz/quiz_repository.dart';
 
@@ -45,8 +45,7 @@ class QuizPage extends HookConsumerWidget {
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (error, _) => QuizError(
             widgetRef: ref,
-            message:
-                error is OldFailure ? error.message : 'Something went wrong!',
+            message: error is Failure ? error.message : 'Something went wrong!',
           ),
         ),
         bottomSheet: quizQuestions.maybeWhen(
