@@ -23,7 +23,9 @@ mixin _$Question {
   String get category => throw _privateConstructorUsedError;
   String get difficulty => throw _privateConstructorUsedError;
   String get question => throw _privateConstructorUsedError;
+  @JsonKey(name: 'correct_answer')
   String get correctAnswer => throw _privateConstructorUsedError;
+  @JsonKey(name: 'incorrect_answers')
   List<String> get answers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,8 +42,8 @@ abstract class $QuestionCopyWith<$Res> {
       {String category,
       String difficulty,
       String question,
-      String correctAnswer,
-      List<String> answers});
+      @JsonKey(name: 'correct_answer') String correctAnswer,
+      @JsonKey(name: 'incorrect_answers') List<String> answers});
 }
 
 /// @nodoc
@@ -95,8 +97,8 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
       {String category,
       String difficulty,
       String question,
-      String correctAnswer,
-      List<String> answers});
+      @JsonKey(name: 'correct_answer') String correctAnswer,
+      @JsonKey(name: 'incorrect_answers') List<String> answers});
 }
 
 /// @nodoc
@@ -149,8 +151,8 @@ class _$_Question implements _Question {
       {required this.category,
       required this.difficulty,
       required this.question,
-      required this.correctAnswer,
-      required final List<String> answers})
+      @JsonKey(name: 'correct_answer') required this.correctAnswer,
+      @JsonKey(name: 'incorrect_answers') required final List<String> answers})
       : _answers = answers;
 
   factory _$_Question.fromJson(Map<String, dynamic> json) =>
@@ -163,9 +165,11 @@ class _$_Question implements _Question {
   @override
   final String question;
   @override
+  @JsonKey(name: 'correct_answer')
   final String correctAnswer;
   final List<String> _answers;
   @override
+  @JsonKey(name: 'incorrect_answers')
   List<String> get answers {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_answers);
@@ -216,8 +220,10 @@ abstract class _Question implements Question {
       {required final String category,
       required final String difficulty,
       required final String question,
-      required final String correctAnswer,
-      required final List<String> answers}) = _$_Question;
+      @JsonKey(name: 'correct_answer')
+          required final String correctAnswer,
+      @JsonKey(name: 'incorrect_answers')
+          required final List<String> answers}) = _$_Question;
 
   factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
 
@@ -228,8 +234,10 @@ abstract class _Question implements Question {
   @override
   String get question => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'correct_answer')
   String get correctAnswer => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'incorrect_answers')
   List<String> get answers => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

@@ -10,9 +10,10 @@ _$_Question _$$_QuestionFromJson(Map<String, dynamic> json) => _$_Question(
       category: json['category'] as String,
       difficulty: json['difficulty'] as String,
       question: json['question'] as String,
-      correctAnswer: json['correctAnswer'] as String,
-      answers:
-          (json['answers'] as List<dynamic>).map((e) => e as String).toList(),
+      correctAnswer: json['correct_answer'] as String,
+      answers: (json['incorrect_answers'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
@@ -20,6 +21,6 @@ Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
       'category': instance.category,
       'difficulty': instance.difficulty,
       'question': instance.question,
-      'correctAnswer': instance.correctAnswer,
-      'answers': instance.answers,
+      'correct_answer': instance.correctAnswer,
+      'incorrect_answers': instance.answers,
     };

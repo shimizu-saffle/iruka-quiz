@@ -9,8 +9,8 @@ class Question with _$Question {
     required String category,
     required String difficulty,
     required String question,
-    required String correctAnswer,
-    required List<String> answers,
+    @JsonKey(name: 'correct_answer') required String correctAnswer,
+    @JsonKey(name: 'incorrect_answers') required List<String> answers,
   }) = _Question;
 
   factory Question.fromJson(Map<String, dynamic> json) =>
