@@ -12,7 +12,7 @@ import '../models/failure_model.dart';
 import '../models/question_model.dart';
 import '../repositories/quiz/quiz_repository.dart';
 
-final quizQuestionsProvider = FutureProvider.autoDispose<List<Question>>(
+final quizQuestionsProvider = FutureProvider.autoDispose<List<OldQuestion>>(
   (ref) => ref.watch(quizRepositoryProvider).getQuestions(
         numQuestions: 5,
         categoryId: Random().nextInt(24) + 9,
@@ -45,7 +45,8 @@ class QuizPage extends HookConsumerWidget {
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (error, _) => QuizError(
             widgetRef: ref,
-            message: error is Failure ? error.message : 'Something went wrong!',
+            message:
+                error is OldFailure ? error.message : 'Something went wrong!',
           ),
         ),
         bottomSheet: quizQuestions.maybeWhen(
@@ -79,7 +80,7 @@ class QuizPage extends HookConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     PageController pageController,
-    List<Question> questions,
+    List<OldQuestion> questions,
   ) {
     if (questions.isEmpty) {
       return QuizError(
@@ -190,7 +191,7 @@ class QuizResults extends StatelessWidget {
   }) : super(key: key);
 
   final QuizState state;
-  final List<Question> questions;
+  final List<OldQuestion> questions;
   final WidgetRef widgetRef;
 
   @override
@@ -241,7 +242,7 @@ class QuizQuestions extends StatelessWidget {
 
   final PageController pageController;
   final QuizState state;
-  final List<Question> questions;
+  final List<OldQuestion> questions;
   final WidgetRef widgetRef;
 
   @override

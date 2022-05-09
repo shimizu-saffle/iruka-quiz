@@ -15,8 +15,8 @@ class QuizState extends Equatable {
   });
 
   final String selectedAnswer;
-  final List<Question> correct;
-  final List<Question> incorrect;
+  final List<OldQuestion> correct;
+  final List<OldQuestion> incorrect;
   final QuizStatus status;
 
   factory QuizState.initial() {
@@ -41,8 +41,8 @@ class QuizState extends Equatable {
 
   QuizState copyWith({
     String? selectedAnswer,
-    List<Question>? correct,
-    List<Question>? incorrect,
+    List<OldQuestion>? correct,
+    List<OldQuestion>? incorrect,
     QuizStatus? status,
   }) {
     return QuizState(

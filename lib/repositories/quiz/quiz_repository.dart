@@ -20,7 +20,7 @@ class QuizRepository extends BaseQuizRepository {
   QuizRepository(this._read);
 
   @override
-  Future<List<Question>> getQuestions({
+  Future<List<OldQuestion>> getQuestions({
     required int numQuestions,
     required int categoryId,
     required Difficulty difficulty,
@@ -47,16 +47,16 @@ class QuizRepository extends BaseQuizRepository {
         final data = Map<String, dynamic>.from(response.data);
         final results = List<Map<String, dynamic>>.from(data['results'] ?? []);
         if (results.isNotEmpty) {
-          return results.map((e) => Question.fromMap(e)).toList();
+          return results.map((e) => OldQuestion.fromMap(e)).toList();
         }
       }
       return [];
     } on DioError catch (err) {
-      throw Failure(
+      throw OldFailure(
         message: err.response?.statusMessage ?? 'Something went wrong!',
       );
     } on SocketException {
-      throw const Failure(message: 'Please check your connection.');
+      throw const OldFailure(message: 'Please check your connection.');
     }
   }
 }
