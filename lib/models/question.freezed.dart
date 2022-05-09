@@ -26,7 +26,7 @@ mixin _$Question {
   @JsonKey(name: 'correct_answer')
   String get correctAnswer => throw _privateConstructorUsedError;
   @JsonKey(name: 'incorrect_answers')
-  List<String> get answers => throw _privateConstructorUsedError;
+  List<String> get incorrectAnswers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +43,7 @@ abstract class $QuestionCopyWith<$Res> {
       String difficulty,
       String question,
       @JsonKey(name: 'correct_answer') String correctAnswer,
-      @JsonKey(name: 'incorrect_answers') List<String> answers});
+      @JsonKey(name: 'incorrect_answers') List<String> incorrectAnswers});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
     Object? difficulty = freezed,
     Object? question = freezed,
     Object? correctAnswer = freezed,
-    Object? answers = freezed,
+    Object? incorrectAnswers = freezed,
   }) {
     return _then(_value.copyWith(
       category: category == freezed
@@ -79,9 +79,9 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
           ? _value.correctAnswer
           : correctAnswer // ignore: cast_nullable_to_non_nullable
               as String,
-      answers: answers == freezed
-          ? _value.answers
-          : answers // ignore: cast_nullable_to_non_nullable
+      incorrectAnswers: incorrectAnswers == freezed
+          ? _value.incorrectAnswers
+          : incorrectAnswers // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
@@ -98,7 +98,7 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
       String difficulty,
       String question,
       @JsonKey(name: 'correct_answer') String correctAnswer,
-      @JsonKey(name: 'incorrect_answers') List<String> answers});
+      @JsonKey(name: 'incorrect_answers') List<String> incorrectAnswers});
 }
 
 /// @nodoc
@@ -117,7 +117,7 @@ class __$$_QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
     Object? difficulty = freezed,
     Object? question = freezed,
     Object? correctAnswer = freezed,
-    Object? answers = freezed,
+    Object? incorrectAnswers = freezed,
   }) {
     return _then(_$_Question(
       category: category == freezed
@@ -136,9 +136,9 @@ class __$$_QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
           ? _value.correctAnswer
           : correctAnswer // ignore: cast_nullable_to_non_nullable
               as String,
-      answers: answers == freezed
-          ? _value._answers
-          : answers // ignore: cast_nullable_to_non_nullable
+      incorrectAnswers: incorrectAnswers == freezed
+          ? _value._incorrectAnswers
+          : incorrectAnswers // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
@@ -146,14 +146,17 @@ class __$$_QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Question implements _Question {
+class _$_Question extends _Question {
   _$_Question(
       {required this.category,
       required this.difficulty,
       required this.question,
-      @JsonKey(name: 'correct_answer') required this.correctAnswer,
-      @JsonKey(name: 'incorrect_answers') required final List<String> answers})
-      : _answers = answers;
+      @JsonKey(name: 'correct_answer')
+          required this.correctAnswer,
+      @JsonKey(name: 'incorrect_answers')
+          required final List<String> incorrectAnswers})
+      : _incorrectAnswers = incorrectAnswers,
+        super._();
 
   factory _$_Question.fromJson(Map<String, dynamic> json) =>
       _$$_QuestionFromJson(json);
@@ -167,17 +170,17 @@ class _$_Question implements _Question {
   @override
   @JsonKey(name: 'correct_answer')
   final String correctAnswer;
-  final List<String> _answers;
+  final List<String> _incorrectAnswers;
   @override
   @JsonKey(name: 'incorrect_answers')
-  List<String> get answers {
+  List<String> get incorrectAnswers {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_answers);
+    return EqualUnmodifiableListView(_incorrectAnswers);
   }
 
   @override
   String toString() {
-    return 'Question(category: $category, difficulty: $difficulty, question: $question, correctAnswer: $correctAnswer, answers: $answers)';
+    return 'Question(category: $category, difficulty: $difficulty, question: $question, correctAnswer: $correctAnswer, incorrectAnswers: $incorrectAnswers)';
   }
 
   @override
@@ -191,7 +194,8 @@ class _$_Question implements _Question {
             const DeepCollectionEquality().equals(other.question, question) &&
             const DeepCollectionEquality()
                 .equals(other.correctAnswer, correctAnswer) &&
-            const DeepCollectionEquality().equals(other._answers, _answers));
+            const DeepCollectionEquality()
+                .equals(other._incorrectAnswers, _incorrectAnswers));
   }
 
   @JsonKey(ignore: true)
@@ -202,7 +206,7 @@ class _$_Question implements _Question {
       const DeepCollectionEquality().hash(difficulty),
       const DeepCollectionEquality().hash(question),
       const DeepCollectionEquality().hash(correctAnswer),
-      const DeepCollectionEquality().hash(_answers));
+      const DeepCollectionEquality().hash(_incorrectAnswers));
 
   @JsonKey(ignore: true)
   @override
@@ -215,7 +219,7 @@ class _$_Question implements _Question {
   }
 }
 
-abstract class _Question implements Question {
+abstract class _Question extends Question {
   factory _Question(
       {required final String category,
       required final String difficulty,
@@ -223,7 +227,8 @@ abstract class _Question implements Question {
       @JsonKey(name: 'correct_answer')
           required final String correctAnswer,
       @JsonKey(name: 'incorrect_answers')
-          required final List<String> answers}) = _$_Question;
+          required final List<String> incorrectAnswers}) = _$_Question;
+  _Question._() : super._();
 
   factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
 
@@ -238,7 +243,7 @@ abstract class _Question implements Question {
   String get correctAnswer => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'incorrect_answers')
-  List<String> get answers => throw _privateConstructorUsedError;
+  List<String> get incorrectAnswers => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_QuestionCopyWith<_$_Question> get copyWith =>
