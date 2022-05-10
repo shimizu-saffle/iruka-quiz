@@ -1,7 +1,19 @@
+import 'dart:math';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../enums/difficulty.dart';
 import '../../models/question/question.dart';
+import '../../repositories/quiz/quiz_repository.dart';
 import 'quiz_state.dart';
+
+final quizQuestionsProvider = FutureProvider.autoDispose<List<Question>>(
+  (ref) => ref.watch(quizRepositoryProvider).getQuestions(
+        numQuestions: 5,
+        categoryId: Random().nextInt(24) + 9,
+        difficulty: Difficulty.any,
+      ),
+);
 
 final quizStateNotifierProvider =
     StateNotifierProvider.autoDispose<QuizStateNotifier, QuizState>(
