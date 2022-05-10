@@ -1,15 +1,15 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:iruka_quiz/controllers/quiz/quiz_state.dart';
 
-import '../../models/question_model.dart';
+import '../../models/question/question.dart';
+import 'quiz_state.dart';
 
-final quizControllerProvider =
-    StateNotifierProvider.autoDispose<QuizController, QuizState>(
-  (_) => QuizController(),
+final quizStateNotifierProvider =
+    StateNotifierProvider.autoDispose<QuizStateNotifier, QuizState>(
+  (_) => QuizStateNotifier(),
 );
 
-class QuizController extends StateNotifier<QuizState> {
-  QuizController() : super(QuizState.initial());
+class QuizStateNotifier extends StateNotifier<QuizState> {
+  QuizStateNotifier() : super(QuizState());
 
   void submitAnswer(Question currentQuestion, String answer) {
     if (state.answered) return;
@@ -38,6 +38,6 @@ class QuizController extends StateNotifier<QuizState> {
   }
 
   void reset() {
-    state = QuizState.initial();
+    state = QuizState();
   }
 }

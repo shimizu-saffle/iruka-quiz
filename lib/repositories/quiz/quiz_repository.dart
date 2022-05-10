@@ -5,8 +5,8 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../enums/difficulty.dart';
-import '../../models/failure_model.dart';
-import '../../models/question_model.dart';
+import '../../models/failure/failure.dart';
+import '../../models/question/question.dart';
 import 'base_quiz_repository.dart';
 
 final dioProvider = Provider<Dio>((ref) => Dio());
@@ -47,7 +47,7 @@ class QuizRepository extends BaseQuizRepository {
         final data = Map<String, dynamic>.from(response.data);
         final results = List<Map<String, dynamic>>.from(data['results'] ?? []);
         if (results.isNotEmpty) {
-          return results.map((e) => Question.fromMap(e)).toList();
+          return results.map((e) => Question.fromJson(e)).toList();
         }
       }
       return [];
@@ -56,7 +56,7 @@ class QuizRepository extends BaseQuizRepository {
         message: err.response?.statusMessage ?? 'Something went wrong!',
       );
     } on SocketException {
-      throw const Failure(message: 'Please check your connection.');
+      throw Failure(message: 'Please check your connection.');
     }
   }
 }

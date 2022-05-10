@@ -1,5 +1,5 @@
 import '../../enums/difficulty.dart';
-import '../../models/question_model.dart';
+import '../../models/question/question.dart';
 
 abstract class BaseQuizRepository {
   Future<List<Question>> getQuestions({
