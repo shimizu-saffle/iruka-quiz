@@ -8,7 +8,7 @@ import 'package:html_character_entities/html_character_entities.dart';
 import '../enums/difficulty.dart';
 import '../models/failure/failure.dart';
 import '../models/question/question.dart';
-import '../providers/quiz/quiz_controller.dart';
+import '../providers/quiz/quiz_provider.dart';
 import '../providers/quiz/quiz_state.dart';
 import '../repositories/quiz/quiz_repository.dart';
 
@@ -50,7 +50,7 @@ class QuizPage extends HookConsumerWidget {
         ),
         bottomSheet: quizQuestions.maybeWhen(
           data: (questions) {
-            final quizState = ref.watch(quizControllerProvider);
+            final quizState = ref.watch(quizStateNotifierProvider);
             if (!quizState.answered) return const SizedBox.shrink();
             return CustomButton(
               title: pageController.page!.toInt() + 1 < questions.length
@@ -58,7 +58,7 @@ class QuizPage extends HookConsumerWidget {
                   : 'See Results',
               onTap: () {
                 ref
-                    .read(quizControllerProvider.notifier)
+                    .read(quizStateNotifierProvider.notifier)
                     .nextQuestion(questions, pageController.page!.toInt());
                 if (pageController.page!.toInt() + 1 < questions.length) {
                   pageController.nextPage(
@@ -87,7 +87,7 @@ class QuizPage extends HookConsumerWidget {
         message: 'No questions found.',
       );
     }
-    final quizState = ref.watch(quizControllerProvider);
+    final quizState = ref.watch(quizStateNotifierProvider);
     return quizState.status == QuizStatus.complete
         ? QuizResults(
             state: quizState,
@@ -222,7 +222,7 @@ class QuizResults extends StatelessWidget {
           title: 'New Quiz',
           onTap: () {
             widgetRef.refresh(quizRepositoryProvider);
-            widgetRef.read(quizControllerProvider.notifier).reset();
+            widgetRef.read(quizStateNotifierProvider.notifier).reset();
           },
         ),
       ],
@@ -290,7 +290,7 @@ class QuizQuestions extends StatelessWidget {
                       isCorrect: e == question.correctAnswer,
                       isDisplayingAnswer: state.answered,
                       onTap: () => widgetRef
-                          .read(quizControllerProvider.notifier)
+                          .read(quizStateNotifierProvider.notifier)
                           .submitAnswer(question, e),
                     ),
                   )

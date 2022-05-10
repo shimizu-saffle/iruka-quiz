@@ -1,15 +1,15 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../models/question/question.dart';
-import 'old_quiz_state.dart';
+import 'quiz_state.dart';
 
 final quizStateNotifierProvider =
-    StateNotifierProvider.autoDispose<QuizStateNotifier, OldQuizState>(
+    StateNotifierProvider.autoDispose<QuizStateNotifier, QuizState>(
   (_) => QuizStateNotifier(),
 );
 
-class QuizStateNotifier extends StateNotifier<OldQuizState> {
-  QuizStateNotifier() : super(OldQuizState.initial());
+class QuizStateNotifier extends StateNotifier<QuizState> {
+  QuizStateNotifier() : super(QuizState());
 
   void submitAnswer(Question currentQuestion, String answer) {
     if (state.answered) return;
@@ -38,6 +38,6 @@ class QuizStateNotifier extends StateNotifier<OldQuizState> {
   }
 
   void reset() {
-    state = OldQuizState.initial();
+    state = QuizState();
   }
 }
