@@ -64,8 +64,6 @@ class QuizQuestions extends StatelessWidget {
                     (e) => AnswerCard(
                       answer: e,
                       isSelected: e == state.selectedAnswer,
-                      isCorrect: e == question.correctAnswer,
-                      isDisplayingAnswer: state.answered,
                       onTap: () => widgetRef
                           .read(quizStateNotifierProvider.notifier)
                           .submitAnswer(question, e),

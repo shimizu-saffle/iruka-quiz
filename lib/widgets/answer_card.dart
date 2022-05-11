@@ -2,22 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:html_character_entities/html_character_entities.dart';
 
 import '../constants/box_shadow.dart';
-import 'circular_icon.dart';
 
 class AnswerCard extends StatelessWidget {
   const AnswerCard({
     Key? key,
     required this.answer,
     required this.isSelected,
-    required this.isCorrect,
-    required this.isDisplayingAnswer,
     required this.onTap,
   }) : super(key: key);
 
   final String answer;
   final bool isSelected;
-  final bool isCorrect;
-  final bool isDisplayingAnswer;
   final VoidCallback onTap;
 
   @override
@@ -38,13 +33,7 @@ class AnswerCard extends StatelessWidget {
           color: Colors.white,
           boxShadow: boxShadow,
           border: Border.all(
-            color: isDisplayingAnswer
-                ? isCorrect
-                    ? Colors.green
-                    : isSelected
-                        ? Colors.red
-                        : Colors.white
-                : Colors.white,
+            color: isSelected ? Colors.yellow.shade700 : Colors.white,
             width: 4.0,
           ),
           borderRadius: BorderRadius.circular(100.0),
@@ -58,21 +47,10 @@ class AnswerCard extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16.0,
-                  fontWeight: isDisplayingAnswer && isCorrect
-                      ? FontWeight.bold
-                      : FontWeight.w400,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
                 ),
               ),
             ),
-            if (isDisplayingAnswer)
-              isCorrect
-                  ? const CircularIcon(icon: Icons.check, color: Colors.green)
-                  : isSelected
-                      ? const CircularIcon(
-                          icon: Icons.close,
-                          color: Colors.red,
-                        )
-                      : const SizedBox.shrink()
           ],
         ),
       ),
