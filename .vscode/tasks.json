@@ -8,14 +8,15 @@
 				"pub",
 				"run",
 				"build_runner",
-				"build"
+				"build",
+				"--delete-conflicting-outputs",
 			],
 			"problemMatcher": [
 				"$dart-build_runner"
 			],
 			"group": "build",
-			"label": "flutter: flutter pub run build_runner build --delete-conflicting-outputs",
-			"detail": ""
+			"label": "自動生成の競合ファイルを削除して再生成",
+			"detail": "--delete-conflicting-outputs"
 		}
 	]
 }
