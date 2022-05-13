@@ -48,6 +48,7 @@ class QuizPage extends HookConsumerWidget {
                   ? '次のクイズ'
                   : '結果を見る👀',
               onTap: () {
+                ref.read(quizStateNotifierProvider.notifier).submitAnswer();
                 ref
                     .read(quizStateNotifierProvider.notifier)
                     .nextQuestion(questions, pageController.page!.toInt());

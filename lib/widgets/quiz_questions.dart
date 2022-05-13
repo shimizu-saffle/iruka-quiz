@@ -66,7 +66,7 @@ class QuizQuestions extends StatelessWidget {
                       isSelected: answer == state.selectedAnswer,
                       onTap: () => widgetRef
                           .read(quizStateNotifierProvider.notifier)
-                          .submitAnswer(question, answer),
+                          .selectAnswer(question, answer),
                     ),
                   )
                   .toList(),

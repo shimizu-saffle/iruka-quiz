@@ -14,6 +14,7 @@ class QuizState with _$QuizState {
     @Default([]) List<Question> correct,
     @Default([]) List<Question> incorrect,
     @Default(QuizStatus.initial) QuizStatus status,
+    Question? currentSelectedQuestion,
   }) = _QuizState;
 
   bool get answered =>
