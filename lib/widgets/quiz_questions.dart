@@ -61,14 +61,12 @@ class QuizQuestions extends StatelessWidget {
             Column(
               children: question.answers
                   .map(
-                    (e) => AnswerCard(
-                      answer: e,
-                      isSelected: e == state.selectedAnswer,
-                      isCorrect: e == question.correctAnswer,
-                      isDisplayingAnswer: state.answered,
+                    (answer) => AnswerCard(
+                      answer: answer,
+                      isSelected: answer == state.selectedAnswer,
                       onTap: () => widgetRef
                           .read(quizStateNotifierProvider.notifier)
-                          .submitAnswer(question, e),
+                          .selectAnswer(question, answer),
                     ),
                   )
                   .toList(),

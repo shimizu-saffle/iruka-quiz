@@ -4,7 +4,7 @@ import '../../models/question/question.dart';
 
 part 'quiz_state.freezed.dart';
 
-enum QuizStatus { initial, correct, incorrect, complete }
+enum QuizStatus { initial, selecting, correct, incorrect, complete }
 
 @freezed
 class QuizState with _$QuizState {
@@ -14,8 +14,11 @@ class QuizState with _$QuizState {
     @Default([]) List<Question> correct,
     @Default([]) List<Question> incorrect,
     @Default(QuizStatus.initial) QuizStatus status,
+    Question? currentSelectedQuestion,
   }) = _QuizState;
 
   bool get answered =>
-      status == QuizStatus.incorrect || status == QuizStatus.correct;
+      status == QuizStatus.selecting ||
+      status == QuizStatus.incorrect ||
+      status == QuizStatus.correct;
 }

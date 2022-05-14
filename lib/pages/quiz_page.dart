@@ -45,9 +45,10 @@ class QuizPage extends HookConsumerWidget {
             if (!quizState.answered) return const SizedBox.shrink();
             return CustomButton(
               title: pageController.page!.toInt() + 1 < questions.length
-                  ? 'Next Question'
-                  : 'See Results',
+                  ? '次のクイズ'
+                  : '結果を見る👀',
               onTap: () {
+                ref.read(quizStateNotifierProvider.notifier).submitAnswer();
                 ref
                     .read(quizStateNotifierProvider.notifier)
                     .nextQuestion(questions, pageController.page!.toInt());

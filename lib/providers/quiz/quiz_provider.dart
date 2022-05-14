@@ -23,18 +23,24 @@ final quizStateNotifierProvider =
 class QuizStateNotifier extends StateNotifier<QuizState> {
   QuizStateNotifier() : super(QuizState());
 
-  void submitAnswer(Question currentQuestion, String answer) {
-    if (state.answered) return;
-    if (currentQuestion.correctAnswer == answer) {
+  void selectAnswer(Question currentQuestion, String answer) =>
       state = state.copyWith(
         selectedAnswer: answer,
-        correct: [...state.correct, currentQuestion],
+        currentSelectedQuestion: currentQuestion,
+        status: QuizStatus.selecting,
+      );
+
+  void submitAnswer() {
+    if (state.currentSelectedQuestion!.correctAnswer == state.selectedAnswer) {
+      state = state.copyWith(
+        selectedAnswer: state.selectedAnswer,
+        correct: [...state.correct, state.currentSelectedQuestion!],
         status: QuizStatus.correct,
       );
     } else {
       state = state.copyWith(
-        selectedAnswer: answer,
-        incorrect: [...state.incorrect, currentQuestion],
+        selectedAnswer: state.selectedAnswer,
+        incorrect: [...state.incorrect, state.currentSelectedQuestion!],
         status: QuizStatus.incorrect,
       );
     }

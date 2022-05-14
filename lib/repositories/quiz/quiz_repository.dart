@@ -31,18 +31,15 @@ class QuizRepository extends BaseQuizRepository {
         'amount': numQuestions,
         'category': categoryId,
       };
-
       if (difficulty != Difficulty.any) {
         queryParameters.addAll(
           {'difficulty': EnumToString.convertToString(difficulty)},
         );
       }
-
       final response = await _read(dioProvider).get(
         'https://opentdb.com/api.php',
         queryParameters: queryParameters,
       );
-
       if (response.statusCode == 200) {
         final data = Map<String, dynamic>.from(response.data);
         final results = List<Map<String, dynamic>>.from(data['results'] ?? []);
