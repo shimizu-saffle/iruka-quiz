@@ -45,7 +45,9 @@ class QuizResults extends StatelessWidget {
         ),
         const SizedBox(height: 40.0),
         CustomButton(
-          title: '全問正解に再挑戦する💪',
+          title: state.correct.length == questions.length
+              ? '全問正解おめでとう！🥳'
+              : '全問正解に再挑戦する💪',
           onTap: () {
             widgetRef.refresh(quizRepositoryProvider);
             widgetRef.read(quizStateNotifierProvider.notifier).reset();
